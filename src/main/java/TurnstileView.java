@@ -1,4 +1,4 @@
-// entity view
+// entity view ---> printing the information
 class TurnstileView {
     public void getInfo(RegisterSys sys) {
         System.out.println("Denied trips: " + sys.deniedNum);

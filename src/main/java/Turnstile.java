@@ -3,13 +3,15 @@ class Turnstile {
     RegisterSys system = new RegisterSys();
 
 
+    //  creating card for student and pupil type
     public Card createCard(CardType type, CardValidity validity, int tripsNumber) {
         if (type == CardType.REGULAR)
             throw new IllegalArgumentException();
 
         Card card = new Card();
         card.setType(type);
-        card.setId(system.count++);
+        card.setId(system.getCount());
+        system.incrementCount();
         card.setValidity(validity);
         card.setTripsNumber(tripsNumber);
 
@@ -17,13 +19,15 @@ class Turnstile {
         return card;
     }
 
+    //  creating card for regular type
     public Card createCard(CardType type, int credits) {
         if (type != CardType.REGULAR)
             throw new IllegalArgumentException();
 
         Card card = new Card();
         card.setType(type);
-        card.setId(system.count++);
+        card.setId(system.getCount());
+        system.incrementCount();
         card.setTripsNumber(credits);
         card.setBalance(credits);
 
@@ -31,7 +35,7 @@ class Turnstile {
         return card;
     }
 
-
+    // simulation of working process
     public void execute() {
         Turnstile turnstile = new Turnstile();
         TurnstileView view = new TurnstileView();
